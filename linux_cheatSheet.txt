@@ -1,0 +1,127 @@
+##
+	LINUX CHEAT CHEAT
+##
+
+basic commands :
+	ls
+	pwd
+	cd
+	cat
+	less
+	man
+
+
+ls :
+	lists contents of directory :
+
+	ls [/aDirectoryName]
+
+	ls -l :
+		long flag :
+			file permission
+			,group
+			,file size
+			,timestamp
+
+	ls -lh :
+		h argument :
+			displays size in human-readable format
+				kb, mb, gb rather than bytes
+	
+		* ls -h == ls --human-readable
+
+	ls -R :
+		list everything in and under a directory
+
+
+pwd (present working directory) :
+	
+	display your location in the file system
+
+cd (change directory) :
+	
+	cd / :
+		move to root directory
+
+cat (concatenate):
+	
+	prints file content to output
+
+less (display file content) :
+
+	quickly display less than a complete file contents
+
+	scroll the content with arrows
+
+	quit by typing 'q'
+
+touch :
+	
+	quickly create a file in the directory 
+
+		ex.: $ touch myFile
+	
+	touching an already existing file will update
+	its timestamp
+
+stat : 
+
+	displays file inode (metadata) information
+
+		ex. : $ stat myFile
+
+rmdir :
+
+	delete (remove) a directory
+
+	* if directory isn't empty : 
+		$ rm -r {myDirectory}
+
+cp (copy) :
+
+	copy a file in a specified directory (if exists)
+		ex. : $ cp myFile /home/max/archive
+
+		if directory doesn't exist, it will create
+		a new file named 'archive'
+
+mv (move) :
+	
+	move a file permanently
+
+* ('gobbling'-> derived from global):
+
+	a wildcard used to designate all files in a directory
+		ex. : $ mv * /home/max/archive
+
+? :
+	
+	a one character placeholder
+		ex. : there are files : file1, file2, file3
+		to be moved to another directory
+
+		$ mv file? /home/max/archive
+
+rm (remove) :
+
+	deleting a file
+		ex. : $ rm myFile
+		ex2. : $ rm myFile*
+
+	deleting all files 
+		ex. : $ rm -r *
+
+SHIFT-CONTROL-C : 
+
+	copy 
+
+SHIFT-CTRL-V :
+	
+	paste
+
+TAB completion :
+
+	press TAB to complete a command
+
+	ex. : $ touch my_new_file_with_a_very_long_name
+	      $ rm my_<tab>
