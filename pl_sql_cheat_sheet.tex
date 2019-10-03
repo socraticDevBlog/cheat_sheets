@@ -1,0 +1,234 @@
+\documentclass[11pt, landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+
+%pour le francais : accents et tout
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+
+%nous permet d'utiliser la fonction de commentaires
+\usepackage{verbatim}
+
+
+\pdfinfo{
+	/Title (Oracle SQL cheat sheet)
+	/Creator (TeX)
+	/Producer (pdfTeX 1.40.0)
+	/Author (SocraticDev)
+	/Subject (Example)
+	/Keywords (Oracle, pl/sql,sql)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+	\raggedright
+	\footnotesize
+	\begin{multicols}{3}
+		
+		% multicol parameters
+		% These lengths are set only within the two main columns
+		%\setlength{\columnseprule}{0.25pt}
+		\setlength{\premulticols}{1pt}
+		\setlength{\postmulticols}{1pt}
+		\setlength{\multicolsep}{1pt}
+		\setlength{\columnsep}{2pt}
+		
+		\begin{center}
+			\Large{\underline{Oracle SQL CheatSheet}} \\
+		\end{center}
+		
+		\section{Plan d'exécution}
+		\begin{itemize}
+			\item Outil d'Oracle analysant comment une requête est exécutée ;
+			\item Permet de mesurer les coûts en termes de performance ;
+			\item Dans PL/SQL developer : File \-- New \-- ExplainPlan
+		\end{itemize}
+		
+		\begin{comment}
+		
+		intéressant, mais pas essentiel pour un CheatSheet (max)
+		
+		\section{Données temporaires}
+		\subsection{Tableau en mémoire :}
+		\begin{itemize}
+		\item Table, Array, VArray ;
+		\item structure peu complexe ;
+		\item Permet de manipuler des scalaires et des enregistrements ;
+		\item Quantité de données : faible volume ;
+		\item Visibilité et utilisation : dans les unités de traitement ;
+		\item Intérêt : logique de traitement.
+		\end{itemize}
+		
+		\subsection{Table temporaire :}
+		\begin{itemize}
+		\item Quantité de données : volume important ;
+		\item Visibilité : transaction ou session ;
+		\item Intérêt :
+		\subitem données privées à chaque session ou transaction 
+		\subitem permet de simplifier des requêtes complexes
+		\subitem peut être utiliser pour améliorer les performances de requêtes
+		\subitem peut servir dans les traitement PL/SQL
+		\item Restrictions : 
+		\subitem Pas possible de spécifier de clé étrangère
+		\end{itemize}
+		
+		\end{comment}
+		
+		\subsection{Requêtes complexes}
+		\begin{itemize}
+			\item le langage SQL n'est pas un langage procédural ;
+			\item Éviter si possible les requêtes complexes qui répondent à plusieurs objectifs à la fois ;
+			\subitem Écrire une requête pour chaque résultat recherché. 
+		\end{itemize}
+		
+		\subsection{Résultats intermédiaires}
+		\begin{itemize}
+			\item Penser à stocker un résultat intermédiaire s'il doit être utilisé plusieurs fois ;
+			\item Décomposer les requêtes longues et complexes en petites requêtes ;
+			\item Utiliser des vues matérialisées : grande quantité de données provenant de requêtes complexes.
+		\end{itemize}
+		
+		\subsection{Vues (non matérialisées)}
+		\begin{itemize}
+			\item Éviter d'effectuer des jointures avec des vues complexes ;
+			\item Éviter d'utiliser des vues créées pour des besoins spécifiques à d'autres circonstances ;
+			\item Faire attention aux jointures externes sur les vues.
+		\end{itemize}
+		
+		\section{Requêtes SQL simples}
+		
+		\subsection{Faire !}
+		\begin{itemize}
+			\item Identifier les colonnes utilisant des fonctions par un nom significatif ;
+			\item Donner un alias significatif aux tables et vues ;
+			\item Mieux exploiter les DECODE et CASE
+			\subitem minimiser la possibilité au PARSER d'accéder plus d'une fois à la même table
+		\end{itemize}
+		
+		\subsection{Ne pas faire !}
+		\begin{itemize}
+			\item Éviter le * dans une requête SELECT
+			\subitem sélectionner uniquement les colonnes nécessaires.
+			\item Éviter de mettre des fonctions sur des colonnes indexées ;
+			\item Éviter les LIKE
+			\subitem utiliser le =
+			\item Éviter les tris dans les requêtes imbriquées
+		\end{itemize}
+		
+		\subsection{IN - NOT IN - EXISTS - NOT EXISTS}
+		\begin{itemize}
+			\item Privilégier EXISTS par rapport à IN (performance) ;
+			\item Privilégier MINUS au lieu de NOT IN et NOT EXISTS (efficacité) ;
+			\item Si possible : transformer les requêtes utilisant NOT EXISTS à l'aide de jointures externes (performance).
+		\end{itemize}
+		
+		\subsection{DISTINCT - UNION - ORDER BY}
+		\begin{itemize}
+			\item Ces opérations engendrent des tris pouvant dégrader les performances ;
+			\item Juger de leur nécessité avant de les utiliser ;
+			\item Dans certains cas, on évite les tris en influençant les méthodes d'accès ;
+			\item UNION ALL au lieu de UNION si possible.
+		\end{itemize}
+		
+		\subsection{FROM et WHERE}
+		\begin{itemize}
+			\item 	Ordre des tables dans la clause FROM n'a pas d'importance ;
+			\item Ordre des conditions dans le WHERE n'a pas d'importance
+			\subitem Oracle optimise en appliquant les clauses les plus restrictives en premier
+			\item Porter attention à bien imbriquer les AND et OR dans le WHERE.
+		\end{itemize}
+		
+		\subsection{Jointures}
+		\begin{itemize}
+			\item L'index sur une colonne est ignorée quand une fonction y est appliquée ;
+			\item L'ordre des jointures peut influencer les performances ;
+			\item Éviter les anti-jointures autant que possible ($>$, $<$, \ldots) ;
+			\item Utiliser l'équi-jointure = et le AND ;
+			\item Éviter le mélange des types de données dans les conditions (conversions implicites) ;
+			\item Exploiter les jointures lorsque la requête doit exploiter plusieurs colonnes
+			\subitem Si la requête ne retourne qu'un résultat, faire une colonne avec un (select) au lieu d'une jointure
+			\item Au lieu de faire les jointures dans le WHERE, on peut exploiter les clauses INNER JOIN, OUTER JOIN
+			\subitem Oracle optimise en appliquant les clauses les plus restrictives en premier
+			\item Porter attention à bien imbriquer les AND et OR dans le WHERE.
+		\end{itemize}
+		
+		\section{PL\textbackslash SQL : scripts, procédures et packages}
+		
+		\subsection{Séquences et INSERT INTO}
+		S'assurer que la valeur courante ($currval$) de la séquence soit identique à la valeur MAX() du champ Séquence de la table où vous faites l'insertion.
+		
+		\par Si vous n'avez pas les privilèges pour modifier la Séquence, dans une boucle, faites un 'séquence.NEXTVAL' jusqu'à atteindre la valeur MAX de la séquence de la table.
+		
+		\subsection{INSERT INTO ... RETURNING ... INTO}
+		Si vous avez besoin d'une valeur générée lors d'une insertion, alors faites suivre la commande INSERT INTO d'un RETURNING \{nom de la colonne\}	INTO \{uneVariable\}
+		
+		\section{Jointures et tris}
+		\begin{itemize}
+			\item nested loops
+			\item sort merge
+			\item cluster
+			\item hash
+		\end{itemize}
+		
+		\subsection{nested loops}
+		Dans Oracle, il est possible d'ajouter des étiquettes aux boucles. Ajouter une étiquette à une boucle imbriquée permet d'expliciter une condition de sortie (EXIT) à celle-ci.
+		
+		\subsection{sort merge}
+		Trier deux tables joints selon la clé de jonction. "Les jointures SORT-MERGE peuvent être efficaces lorsque le manque de sélectivité des données ou d'index utiles rendent une jointure NESTED LOOPS inefficace ou lorsque les deux sources de lignes sont assez volumineuses (plus de 5\% des blocs utilisés)."
+		
+		\subsection{cluster}
+		
+		\subsection{hash}
+		
+		
+		% You can even have references
+		\rule{0.3\linewidth}{0.25pt}
+		\scriptsize
+		\bibliographystyle{abstract}
+		\bibliography{refFile}
+		Formation RAMQ préparée par Momentum Technologies
+		dernière compilation : (\today)
+	\end{multicols}
+\end{document}
