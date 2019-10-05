@@ -107,7 +107,7 @@
 				\begin {itemize}
 					\item removing a file :
 						\subitem \texttt{\$ rm myFile}
-					\item removing an emptydirectory:
+					\item removing an empty directory:
 						\subitem \texttt{\$ rmdir myEmptyDirectory}
 					\item removing a non-empty directory and it contents recursively :
 						\subitem \texttt{rm -r myDirectory}
@@ -192,6 +192,23 @@
 					\item press TAB to complete a command
 						\subitem \texttt{\$ touch myNewFile}
 						\subitem \texttt{\$ rm my<TAB>}
+				\end {itemize}
+				
+		\section {Special Characters}
+		
+			\subsection {* (gobbling)}
+				\begin {itemize}
+					\item wildcard used to designate all files in a directory
+						\subitem \texttt{\$ mv * /home/max/archive}
+					\item wildcard used to designate any characters
+						\subitem \texttt{\$ git add linux*.tex, linux*.pdf}
+				\end {itemize}
+				
+			\subsection {? (question mark)}
+				\begin {itemize}
+					\item represents or matches a single occurrence of any character
+						\subitem there are files named 'file1', 'file2', 'file3'
+						\subitem \texttt{\$ rm file? /home/max/documents}
 				\end {itemize}
 			
 		% You can even have references
