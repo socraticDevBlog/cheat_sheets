@@ -6,21 +6,14 @@
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
-
-% printing code and bash commands
-\usepackage{listings}
-\lstset{
-	language=bash,
-	basicstyle=\ttfamily
-}
+\usepackage[T1]{fontenc}
 
 %pour le francais : accents et tout
-\usepackage[french]{babel}
-\usepackage[utf8]{inputenc}
+%\usepackage[french]{babel}
+%\usepackage[utf8]{inputenc}
 
 %nous permet d'utiliser la fonction de commentaires
 \usepackage{verbatim}
-
 
 \pdfinfo{
 	/Title (Linux bash cheatSheet)
@@ -87,6 +80,7 @@
 		\end{center}
 		
 		\section{Basic Commands}
+		
 			\subsection {ls}
 				\begin {itemize}
 					\item lists content of a directory
@@ -96,26 +90,55 @@
 					\item lists with the recursive flag ${-R}$ everything in and under a directory
 						\subitem \texttt{\$ ls -R /users/max/documents}
 				\end {itemize}
+			
 			\subsection {pwd (present working directory)}
 				\begin {itemize}
 					\item print name of current/working directory
 					\item using flag Logical ${-L}$ to include symlinks
 				\end {itemize}
+			
 			\subsection {cd (change directory)}
 				 \begin {itemize}
 				 	\item ex. : moving to root directory :
 				 	\subitem \texttt{\$ cd \textbackslash}
 				 \end {itemize}			
+				 
+			\subsection {rm (remove)}
+				\begin {itemize}
+					\item removing a file :
+						\subitem \texttt{\$ rm myFile}
+					\item removing an emptydirectory:
+						\subitem \texttt{\$ rmdir myEmptyDirectory}
+					\item removing a non-empty directory and it contents recursively :
+						\subitem \texttt{rm -r myDirectory}
+				\end {itemize}
+				 
+			\subsection {cp (copy)}
+				\begin {itemize}
+					\item copy a file to a specified directory
+						\subitem \texttt{\$ cp myFile /home/max/anotherDirectory}
+				\end {itemize}
+				 
+			\subsection {mv (move)}	
+				\begin {itemize}
+					\item move a file to a specified directory
+						\subitem \texttt{\$ cp myFile /home/max/anotherDirectory}
+				\end {itemize}				 
+			
+		\section {Other Commands}
+			
 			\subsection {cat (concatenate)}
 				\begin {itemize}
 					\item prints file content to output
 				\end {itemize}
+			
 			\subsection {less}
 				\begin {itemize}
 					\item quickly display less than a complete file contents
 					\item scroll document's content with arrows
 					\item quit by typing 'q'
 				\end {itemize}				
+			
 			\subsection {man}		
 				\begin {itemize}
 					\item brings up a one-page interface to reference manuals about a linux command
@@ -123,7 +146,54 @@
 					\item type \textbackslash (backslash) followed by keywords to search into document
 						\subitem move forward to next keyword by typing 'n'
 					\item quit by typing 'q'
-				\end {itemize}	
+				\end {itemize}
+				
+			\subsection {touch}		
+				\begin {itemize}
+					\item updates file timestamps
+					\item if file doesn't exist it will create it
+				\end {itemize}
+			
+			\subsection {stat (status)}		
+				\begin {itemize}
+					\item displays file or file system status
+						\subitem displays file's inode (metadata) information 
+				\end {itemize}
+				
+			\subsection {| (pipe)}	
+			\begin {itemize}
+				\item creates a unidirectional data channel
+				\item takes the output of a commande to feed it as the input of another
+					\subitem \texttt{\$ journalctl | grep myFile.php}
+				\item you can chain as many pipes as you wish
+					\subitem texttt{\$ journalctl | grep myFile.php | grep error}
+			\end {itemize}	
+			
+			\subsection {info}		
+				\begin {itemize}
+					\item reading documentation in Info format
+					\item useful, when you don't know the name of a command you want to use
+					\item click Enter on underlined text to follow links
+						\subitem 'u' will bring you back one level
+						\subitem 'q' to exit 
+				\end {itemize}
+				
+			\subsection {journalctl}		
+				\begin {itemize}
+					\item tool to query the contents of the systemd journal
+						\subitem ideally do filter query with grep
+							\subsubitem \texttt{\$ journalctl | grep myPage.php} 
+				\end {itemize}
+				
+		\section {Keyboard Shortcuts}
+		
+			\subsection {TAB (completion)}
+				\begin {itemize}
+					\item press TAB to complete a command
+						\subitem \texttt{\$ touch myNewFile}
+						\subitem \texttt{\$ rm my<TAB>}
+				\end {itemize}
+			
 		% You can even have references
 		\rule{0.3\linewidth}{0.25pt}
 		\scriptsize
