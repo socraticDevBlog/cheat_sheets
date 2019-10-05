@@ -1,0 +1,135 @@
+\documentclass[11pt, landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+
+% printing code and bash commands
+\usepackage{listings}
+\lstset{
+	language=bash,
+	basicstyle=\ttfamily
+}
+
+%pour le francais : accents et tout
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+
+%nous permet d'utiliser la fonction de commentaires
+\usepackage{verbatim}
+
+
+\pdfinfo{
+	/Title (Linux bash cheatSheet)
+	/Creator (TeX)
+	/Producer (pdfTeX 3.14159265-2.6-1.40.18)
+	/Author (SocraticDev)
+	/Subject (Linux)
+	/Keywords (linux, bash, commands, basics)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+	\raggedright
+	\footnotesize
+	\begin{multicols}{3}
+		
+		% multicol parameters
+		% These lengths are set only within the two main columns
+		%\setlength{\columnseprule}{0.25pt}
+		\setlength{\premulticols}{1pt}
+		\setlength{\postmulticols}{1pt}
+		\setlength{\multicolsep}{1pt}
+		\setlength{\columnsep}{2pt}
+		
+		\begin{center}
+			\Large{\underline{linux CheatSheet}} \\
+		\end{center}
+		
+		\section{Basic Commands}
+			\subsection {ls}
+				\begin {itemize}
+					\item lists content of a directory
+						\subitem \texttt{ls [/aDirectoryName]}
+					\item lists content with the long flag ${-l}$ and human-readble flag ${h}$ displays file permissions and size information
+						\subitem \texttt{\$ ls -lh /users/max/documents}
+					\item lists with the recursive flag ${-R}$ everything in and under a directory
+						\subitem \texttt{\$ ls -R /users/max/documents}
+				\end {itemize}
+			\subsection {pwd (present working directory)}
+				\begin {itemize}
+					\item print name of current/working directory
+					\item using flag Logical ${-L}$ to include symlinks
+				\end {itemize}
+			\subsection {cd (change directory)}
+				 \begin {itemize}
+				 	\item ex. : moving to root directory :
+				 	\subitem \texttt{\$ cd \textbackslash}
+				 \end {itemize}			
+			\subsection {cat (concatenate)}
+				\begin {itemize}
+					\item prints file content to output
+				\end {itemize}
+			\subsection {less}
+				\begin {itemize}
+					\item quickly display less than a complete file contents
+					\item scroll document's content with arrows
+					\item quit by typing 'q'
+				\end {itemize}				
+			\subsection {man}		
+				\begin {itemize}
+					\item brings up a one-page interface to reference manuals about a linux command
+						\subitem ex. : \texttt{\$ man ls}
+					\item type \textbackslash (backslash) followed by keywords to search into document
+						\subitem move forward to next keyword by typing 'n'
+					\item quit by typing 'q'
+				\end {itemize}	
+		% You can even have references
+		\rule{0.3\linewidth}{0.25pt}
+		\scriptsize
+		\bibliographystyle{abstract}
+		\bibliography{refFile}
+		David Clinton (2018), Linux in Action
+		dernière compilation : (\today)
+	\end{multicols}
+\end{document}
