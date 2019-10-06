@@ -1,0 +1,42 @@
+##
+	VM cheat sheet
+##
+
+permanently share a folder from a MacOs host to a VirtualBox Linux VM
+
+	on MacOs Host :
+	
+		- virtual box application :
+		
+			settings -> shared folders -> folder(+) -> select a directory
+			
+			write down a folder name : 'Shared'
+			
+			check 'auto-mount' and 'Make Permanent'
+			
+	On Linux VM :
+	
+		 Create a new folder in your 'Documents' directory with the name : 'Shared'
+		 
+		 Open a terminal and type 'id'. Remember that ID
+		 
+		 Still in Terminal : become root by typing 'sudo su'
+		 
+			change directory to /etc : 'cd /etc'
+			
+			open 'rc.local' with vim by typing : 'vi rc.local'
+			
+			go to the end of the file and press 'i' to be in Insertion mode
+			
+			insert this new line :
+			
+			sudo mount -t vboxsf -o uid={your id},gid={your id} Shares /home/{your user name}/Documents/Shared'
+			
+			press Esc to exit Insertion mode
+			
+			type ':wq' to save and quit
+			
+			type 'init 6' to reboot your VM
+		
+			
+source (2019-10-05) : https://ryansechrest.com/2012/10/permanently-share-a-folder-between-host-mac-and-guest-linux-os-using-virtualbox/
