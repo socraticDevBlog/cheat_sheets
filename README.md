@@ -1,6 +1,6 @@
 # Cheat Sheets
 
-> view files as PDF and edit them with LaTeX
+> view files as PDF and edit them with LaTeX. Print in Landscape mode.
 
 ## linux cheat sheet
 
