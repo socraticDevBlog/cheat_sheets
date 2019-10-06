@@ -78,6 +78,18 @@
 		\begin{center}
 			\Large{\underline{linux CheatSheet}} \\
 		\end{center}
+	
+		\section {Top-level Directories}
+			\begin {itemize}
+				\item / : root
+				\subitem /etc : Program Configuration Files 
+				\subitem /var : Frequently changing content (ex. logs)  
+				\subitem /home : User account files  
+				\subitem /sbin : System binary files  
+				\subitem /bin : User binary files  			
+				\subitem /lib : Shared libraries
+				\subitem /usr : Third-party libraries	 			
+			\end {itemize}
 		
 		\section{Basic Commands}
 		
@@ -183,6 +195,11 @@
 					\item tool to query the contents of the systemd journal
 						\subitem ideally do filter query with grep
 							\subsubitem \texttt{\$ journalctl | grep myPage.php} 
+				\end {itemize}
+				
+			\subsection {arch}		
+				\begin {itemize}
+					\item prints your system architecture (ex: x86\_64) 
 				\end {itemize}
 				
 		\section {Keyboard Shortcuts}
