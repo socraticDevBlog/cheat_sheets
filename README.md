@@ -15,4 +15,4 @@ Workplace stuff
 
 ## Python cheat sheet
 
-covering the use of _venv for now
+covering the use of _venv_ for now
