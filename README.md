@@ -1,5 +1,7 @@
 # Cheat Sheets
 
+> view files as PDF and edit them with LaTeX
+
 ## linux cheat sheet
 
 Useful commands and stuff to get the most out of the Terminal
