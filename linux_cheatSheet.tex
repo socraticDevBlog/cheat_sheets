@@ -18,7 +18,7 @@
 \pdfinfo{
 	/Title (Linux bash cheatSheet)
 	/Creator (TeX)
-	/Producer (pdfTeX 3.14159265-2.6-1.40.18)
+	/Producer (pdfTeX 2.9.6499)
 	/Author (SocraticDev)
 	/Subject (Linux)
 	/Keywords (linux, bash, commands, basics)}
@@ -227,13 +227,19 @@
 						\subitem there are files named 'file1', 'file2', 'file3'
 						\subitem \texttt{\$ rm file? /home/max/documents}
 				\end {itemize}
+				
+			\subsection {\textbackslash (backslash)}
+				\begin {itemize}
+					\item The backslash character can be used to conveniently break a long command into multiple lines on the command line.
+						\subitem \texttt{\# yum install lxc lxc-templates \textbackslash \\ libcaps-devel libcgroup busybox}	
+				\end {itemize}				
 			
 		% You can even have references
 		\rule{0.3\linewidth}{0.25pt}
 		\scriptsize
 		\bibliographystyle{abstract}
 		\bibliography{refFile}
-		David Clinton (2018), Linux in Action
-		dernière compilation : (\today)
+		David Clinton (2018), Linux in Action \\
+		\~ Last compiled : (\today)
 	\end{multicols}
 \end{document}
