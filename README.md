@@ -13,8 +13,12 @@ Useful commands and stuff to get the most out of the Terminal
 
 ## Pl/Sql cheat sheet
 
-Workplace stuff
+Useful Pl/Sql tricks and useful patterns
 
 ## Python cheat sheet
 
 covering the use of _venv_ for now
+
+### LaTeX library (.sty)
+
+I did my best to include style files (.sty) required to compile your own Pdf thru PdfLatex compilion
