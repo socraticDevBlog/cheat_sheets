@@ -233,13 +233,33 @@
 					\item The backslash character can be used to conveniently break a long command into multiple lines on the command line.
 						\subitem \texttt{\# yum install lxc lxc-templates \textbackslash \\ libcaps-devel libcgroup busybox}	
 				\end {itemize}				
+
+		\section {System Administration} 
+			\subsection {systemd}
+				\begin {itemize}
+					\item first process to run on a system
+					\item show all services and processes running
+						\subitem \texttt{\$ systemctl list-units --type service --state running}
+						\subitem {or}
+						\subitem \texttt{\$ systemctl --no-pager | grep service | grep running | column -t}
+					\item show all installed unit-files 
+						\subitem \texttt{\$ systemctl list-units --type service}
+						\subitem {or}
+						\subitem \texttt{\$ systemctl list-units --type service --state running --no-legend}
+					\item show processes that executed then exited
+						\subitem \texttt{\$ systemctl list-units --type service --state exited}
+					\item show processes that have failed
+						\subitem \texttt{\$ systemctl list-units --type service --state failed}
+					\item *In order to pass the output to $stdout$ instead of a pager
+						\subitem \texttt{add argument `---no-pager'}
+				\end {itemize}
+
 			
 		% You can even have references
 		\rule{0.3\linewidth}{0.25pt}
 		\scriptsize
 		\bibliographystyle{abstract}
-		\bibliography{refFile}
-		David Clinton (2018), Linux in Action \\
-		\~ Last compiled : (\today)
+		\bibliography{refFile}\\
+		Last compiled : (\today)
 	\end{multicols}
 \end{document}
