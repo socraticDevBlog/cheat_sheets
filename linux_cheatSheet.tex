@@ -197,9 +197,12 @@
 							\subsubitem \texttt{\$ journalctl | grep myPage.php} 
 				\end {itemize}
 				
-			\subsection {arch}		
+			\subsection {kernel \& archictecture}		
 				\begin {itemize}
-					\item prints your system architecture (ex: x86\_64) 
+					\item print your system architecture (ex: x86\_64) 
+						\subitem \texttt{\$ arch}
+					\item print your kernel's version
+						\subitem \texttt{\$ uname -r}
 				\end {itemize}
 				
 		\section {Keyboard Shortcuts}
@@ -252,14 +255,40 @@
 						\subitem \texttt{\$ systemctl list-units --type service --state failed}
 					\item *In order to pass the output to $stdout$ instead of a pager
 						\subitem \texttt{add argument `---no-pager'}
+					\item enabling and starting a service (without rebooting)
+						\subitem \texttt{\$ systemctl enable --now httpd}
+					\item show boot time
+						\subitem \texttt{\$ systemd-analyze}
+					\item identify which process slow down boot
+						\subitem \texttt{\$ systemd-analyze blame}
 				\end {itemize}
 
+		\section {SELinux}
+			\begin {itemize}
+				\item {show SELinux status}
+					\subitem \texttt{\$ sestatus}
+				\item {disable error enforcing and logging them instead}
+					\subitem \texttt{\$ sudo setenforce 0}
+			\end {itemize}
+
+		\section {Docker}
+			\begin {itemize}
+				\item {show Docker version}
+					\subitem \texttt{\$ docker version}
+				\item {starting Docker daemon manually}
+					\subitem \texttt{\$ sudo docker daemon}
+				\item {add user to Docker group (i.e. running Docker as root)}
+					\subitem {on Ubuntu}
+						\subsubitem \texttt{\$ sudo usermod -aG docker}
+				\item {restarting Docker}
+					\subitem \texttt{\$ sudo service docker restart}
+			\end {itemize}
 			
 		% You can even have references
 		\rule{0.3\linewidth}{0.25pt}
 		\scriptsize
 		\bibliographystyle{abstract}
 		\bibliography{refFile}\\
-		Last compiled : (\today)
+		Last compilation : \today
 	\end{multicols}
 \end{document}
