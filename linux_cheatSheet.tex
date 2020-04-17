@@ -283,6 +283,26 @@
 				\item {restarting Docker}
 					\subitem \texttt{\$ sudo service docker restart}
 			\end {itemize}
+
+		\section {Utils}
+			\begin {itemize}
+				\item {show regional settings}
+					\subitem \texttt{\$ locale}
+					\subitem \texttt{\$ localectl}
+				\item {display information about the nature of a command}
+					\subitem \texttt{\$ type \{command\}}
+						\subsubitem \texttt{\$ type bash}
+				\item {display information about time and timezones}
+					\subitem \texttt{\$ timedatectl}
+				\item {display all block devices connected and their size}
+					\subitem {df -ht ext4}
+				\item {display interactions with the kernel}
+					\subitem \texttt{\$ demsg}
+				\item {list all hardware connected} 
+					\subitem \texttt{\$ sudo  lshw | less}
+				\item {show grub configuration}
+					\subitem \texttt{\$ less /etc/default/grub}
+			\end {itemize}
 			
 		% You can even have references
 		\rule{0.3\linewidth}{0.25pt}
