@@ -101,6 +101,9 @@
 						\subitem \texttt{\$ ls -lh /users/max/documents}
 					\item lists with the recursive flag ${-R}$ everything in and under a directory
 						\subitem \texttt{\$ ls -R /users/max/documents}
+					\item lists hidden files as well 
+						\subitem \texttt{\$ ls -a /users/max/documents}
+						\subitem \texttt{\$ ls --all (2 hyphens)}
 				\end {itemize}
 			
 			\subsection {pwd (present working directory)}
@@ -112,7 +115,9 @@
 			\subsection {cd (change directory)}
 				 \begin {itemize}
 				 	\item ex. : moving to root directory :
-				 	\subitem \texttt{\$ cd \textbackslash}
+				 		\subitem \texttt{\$ cd \textbackslash}
+					\item back to Home to directory from where-ever
+						\subitem \texttt {\$ cd}
 				 \end {itemize}			
 				 
 			\subsection {rm (remove)}
@@ -238,6 +243,25 @@
 				\end {itemize}				
 
 		\section {System Administration} 
+
+			\subsection {networking}
+				\begin {itemize}
+					\item {display machine's ip addresses}
+						\subitem \texttt{\$ ip addr}
+				\end {itemize}
+
+			\subsection {bash}
+				\begin {itemize}
+					\item bashrc : file containing shell settings from non-logged in shell
+						\subitem \texttt {\$ less .bashrc}
+					\item .profile : file containing shell settings from logged-in shell (ex.: ssh sessions)
+						\subitem \texttt {\$ less .profile} 
+						\subitem \texttt {\$ less /etc/profile} 
+					\item apps user information and default shell
+						\subitem \texttt {\$ cat /etc/passwd}
+					\item list of 1000 most recent commands typed
+						\subitem \texttt {\$ cat .bash\_history}
+				\end {itemize}
 			\subsection {systemd}
 				\begin {itemize}
 					\item first process to run on a system
