@@ -17,7 +17,7 @@ Useful Pl/Sql tricks and useful patterns
 
 ## Python cheat sheet
 
-covering the use of _venv_ for now
+covering common dependencies and Utils 
 
 ### LaTeX library (.sty)
 
