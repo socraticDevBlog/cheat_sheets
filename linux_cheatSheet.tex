@@ -186,6 +186,10 @@
 					\subitem \texttt{\$ journalctl | grep myFile.php | grep error}
 			\end {itemize}	
 			
+			\subsection {!}
+			\begin {itemize}
+				\item replay last command which first letters starts with the provided letters
+			\end {itemize}
 			\subsection {info}		
 				\begin {itemize}
 					\item reading documentation in Info format
@@ -202,7 +206,7 @@
 							\subsubitem \texttt{\$ journalctl | grep myPage.php} 
 				\end {itemize}
 				
-			\subsection {kernel \& archictecture}		
+			\subsection {kernel \& architecture}		
 				\begin {itemize}
 					\item print your system architecture (ex: x86\_64) 
 						\subitem \texttt{\$ arch}
@@ -217,6 +221,8 @@
 					\item press TAB to complete a command
 						\subitem \texttt{\$ touch myNewFile}
 						\subitem \texttt{\$ rm my<TAB>}
+					\item clear the terminal
+						\subitem \texttt{ctrl-l}
 				\end {itemize}
 				
 		\section {Special Characters}
@@ -285,6 +291,8 @@
 						\subitem \texttt{\$ systemd-analyze}
 					\item identify which process slow down boot
 						\subitem \texttt{\$ systemd-analyze blame}
+					\item restart service
+						\subitem {systemctl restart $servicename$}
 				\end {itemize}
 
 		\section {SELinux}
@@ -294,6 +302,14 @@
 				\item {disable error enforcing and logging them instead}
 					\subitem \texttt{\$ sudo setenforce 0}
 			\end {itemize}
+			
+		\section {Apache web server}
+		\begin {itemize}
+			\item {check config file syntax}
+				\subitem \texttt{apachectl configtest}
+			\item {display loaded modules}
+				\subitem \texttt{apachectl -M}
+		\end {itemize}
 
 		\section {Docker}
 			\begin {itemize}
@@ -341,8 +357,7 @@
 		% You can even have references
 		\rule{0.3\linewidth}{0.25pt}
 		\scriptsize
-		\bibliographystyle{abstract}
-		\bibliography{refFile}\\
+
 		Last compilation : \today
 	\end{multicols}
 \end{document}
