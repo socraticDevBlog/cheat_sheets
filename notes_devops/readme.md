@@ -9,5 +9,5 @@ use pandoc (and all its dependencies)
 run command to generate pdf file:
 
 ```bash
-pandoc --pdf-engine=xelatex --highligh-style zenburn --table-of-contents -s devops.md -o devops.pdf
+pandoc --pdf-engine=xelatex --highlight-style zenburn --table-of-contents -s devops.md -o devops.pdf
 ```
