@@ -6,3 +6,5 @@
 *.out
 *.synctex.gz
 *.txt
+
+.DS_Store
